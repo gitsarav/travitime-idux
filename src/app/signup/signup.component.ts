@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ValidationFormsService } from '../service/common/validation-form.service';
 import { ToastService } from '../service/common/toast.service';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-signup',
@@ -56,7 +57,8 @@ export class SignupComponent implements OnInit {
     private signupService: SignupService,
     private router: Router,
     private vf: ValidationFormsService,
-    public toastService: ToastService
+    public toastService: ToastService,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) {
     this.formErrors = this.vf.errorMessages;
   }
@@ -97,8 +99,25 @@ export class SignupComponent implements OnInit {
     //   this.sendTokenToBackend(token);
     // });
     if (this.signupForm.invalid) return;
+    this.recaptchaV3Service.execute('importantAction').subscribe((token) => this.handleRecaptchaToken(token));
+
+
+    // const timerSource = timer(3000);
+
+    // timerSource.subscribe((val) => {
+    //   this.isLoading = false;
+    //   this.sigunpSuccess = true;
+    // });
+  }
+  handleRecaptchaToken(token){
+    console.log(token);
+    console.log(this.signupForm.value);
+    let payLoad = JSON.parse(JSON.stringify(this.signupForm.value));
+    payLoad.recaptchaToken = token;
+    console.log(payLoad);
     this.isLoading = true;
-    this.signupService.newSignup(this.signupForm.value).subscribe(
+    this.isLoading = true;
+    this.signupService.newSignup(payLoad).subscribe(
       (res) => {
         console.log(res);
       },
@@ -112,15 +131,7 @@ export class SignupComponent implements OnInit {
         });
       }
     );
-
-    // const timerSource = timer(3000);
-
-    // timerSource.subscribe((val) => {
-    //   this.isLoading = false;
-    //   this.sigunpSuccess = true;
-    // });
   }
-
   onCaptchaResponse(event) {
     console.log(event);
   }

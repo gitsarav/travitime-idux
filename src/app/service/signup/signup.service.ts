@@ -17,6 +17,7 @@ export class SignupService {
       phone: signupValue.phone,
       company: signupValue.companyName,
       name: signupValue.fullName,
+      recaptchaToken: signupValue.recaptchaToken,
     };
 
     return this.http

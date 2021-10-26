@@ -22,6 +22,7 @@ import { ToastComponent } from './common/toast/toast.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthComponent } from './auth/auth.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
 
 @NgModule({
   declarations: [
@@ -49,12 +50,14 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
     CarouselModule,
     FormsModule,
     HttpClientModule,
+    RecaptchaV3Module
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LdYm8UcAAAAADu8pSWHZRKw0IbGNZddmTn48TYD" }
   ],
   bootstrap: [AppComponent],
 })

@@ -26,6 +26,7 @@
     "bootstrap": "^5.0.0-beta3",
     "boxicons": "^2.0.9",
     "mdb-angular-ui-kit": "^1.2.0",
+    "ng-recaptcha": "^8.0.1",
     "ngx-owl-carousel-o": "^6.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
