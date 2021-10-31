@@ -3,7 +3,7 @@
 }
 .signup-left-div {
   /* background-color: var(--bs-indigo); */
-  background: url(/assets/images/signup-bg.jpg) no-repeat;
+  background: url(../../assets/images/signup-bg.jpg) no-repeat;
   background-size: cover;
 }
 

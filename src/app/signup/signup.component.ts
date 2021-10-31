@@ -69,22 +69,22 @@ export class SignupComponent implements OnInit {
 
   initSignupForm(): void {
     this.signupForm = this.fb.group({
-      fullName: ['jauyasj', [Validators.required]],
+      fullName: ['', [Validators.required]],
       userEmail: [
-        'jjayaraaj@gmail.com',
+        '',
         [Validators.required, ValidationService.emailValidator],
       ],
       password: [
-        'Asdfdf4r5t',
+        '',
         [
           Validators.required,
           Validators.minLength(this.vf.formRules.passwordMin),
           Validators.pattern(this.vf.formRules.passwordPattern),
         ],
       ],
-      companyName: ['test', [Validators.required]],
+      companyName: ['', [Validators.required]],
       phone: [
-        '111111111111',
+        '',
         [
           Validators.required,
           Validators.pattern(this.vf.formRules.phonePattern),
@@ -120,6 +120,15 @@ export class SignupComponent implements OnInit {
     this.signupService.newSignup(payLoad).subscribe(
       (res) => {
         console.log(res);
+        this.toastService.show('Account created successfully', {
+          classname: 'bg-success text-light',
+          delay: 3000,
+          autohide: true,
+        });
+        setTimeout(() => {
+          this.router.navigate(['auth/activate-account']);
+        }, 4000);
+        // this.router.navigate(['login']);
       },
       (error) => {
         this.isLoading = false;

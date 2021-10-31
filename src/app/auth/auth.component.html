@@ -26,10 +26,10 @@
   </div>
 </nav>
 <div class="bg-blue-400 d-flex align-items-center w-100 justify-content-center main-div h-100 ">
-
   <app-login *ngIf="page==='login'"></app-login>
   <app-forgot-password *ngIf="page==='forgot-password'"></app-forgot-password>
   <app-reset-password *ngIf="page==='reset-password'"></app-reset-password>
+  <app-activate-account *ngIf="page==='activate-account'" [param]="param"></app-activate-account>
 
 </div>
 

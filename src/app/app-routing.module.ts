@@ -2,6 +2,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGaurd } from './service/gaurd/auth-gaurd.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ActivateAccountComponent } from './auth/activate-account/activate-account.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   },
   {
     path: 'auth/:page',
+    component: AuthComponent,
+  },
+  {
+    path: 'auth/:page/:param',
     component: AuthComponent,
   },
   {

@@ -1,1 +1,21 @@
-<p>activate-account works!</p>
+<div class="w-50 m-auto">
+    <div class=" p-5 bg-white rounded shadow-sm ">
+      <div class="row">
+        <div class="col-12 col-md-12"></div>
+        <div class="col-12 col-md-12" *ngIf="!isLoading">
+          <p class="text-secondary fs-5"  *ngIf="isSubmitted && isActivated">{{message}}</p>
+          <p class="text-secondary fs-5" *ngIf="isSubmitted && !isActivated">{{message}}</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+          </p>
+  
+  
+        </div>
+        <div class="col-12 col-md-12" *ngIf="isLoading">
+            <p class="text-secondary fs-5">Please wait...</p>
+            
+          </div>
+      </div>
+    </div>
+    
+  </div>
+  
