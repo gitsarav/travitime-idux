@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  availableLanguages: [
+    'en',
+    'es'
+  ],
   API_URL: 'http://localhost:3000/api/',
 };
 

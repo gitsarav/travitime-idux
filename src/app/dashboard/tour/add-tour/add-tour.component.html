@@ -1,1 +1,90 @@
-<p>add-tour works!</p>
+<div class="row mt-0">
+  <div class="col-12 col-md-8">
+    <div class="bg-white shadow-sm">
+      <div class="py-5 rounded position-relative">
+        <form class="" [formGroup]="addTourForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+          <!-- <form class=""  novalidate (ngSubmit)="onSubmit()" class="needs-validation"> -->
+          <div class="" class="px-5">
+            <h4>{{'TOUR.TITLE_CREATE_NEW' | translate}}</h4>
+            <field-input formControlName="tourName" label="Tour Name"></field-input>
+            <field-daterange formControlName="tourDate" label="Tour Date"></field-daterange>
+            <field-select formControlName="country" label="Country" [options]="countryOptions"></field-select>
+            <field-select formControlName="travelMode" label="Mode of Travel" [options]="travelModeOptions"></field-select>
+            <field-select formControlName="natureOfTravel" label="Nature of Travel" [options]="natureOfOptions"></field-select>
+            
+            <field-input formControlName="noOfDays" label="No of days" type="number"></field-input>
+            <!-- 
+              <div class="form-group pt-4">
+              <div class="label">Country of Visit </div>
+              <input type="text" class="form-control" placeholder="Select Country"
+                formControlName="country">
+              <div *ngIf="f.country.errors && f.country.touched" class="form-text  text-danger">
+                <div *ngIf="f['country'].errors.country">Invalid Country of visit</div>
+              </div>
+            </div>
+            <div class="form-group pt-4">
+              <div class="label">No of days </div>
+              <input type="number" class="form-control" placeholder="No of Days"
+                formControlName="noOfDays">
+              <div *ngIf="f.noOfDays.errors && f.noOfDays.touched" class="form-text  text-danger">
+                <div *ngIf="f['noOfDays'].errors.noOfDays">Invalid No of Days</div>
+              </div>
+            </div> 
+
+           
+            <div class="form-group pt-4">
+              <div class="label">Mode Of Travel</div>
+              <input type="text" class="form-control" placeholder=""
+                formControlName="travelMode">
+              <div *ngIf="f.travelMode.errors && f.travelMode.touched" class="form-text  text-danger">
+                <div *ngIf="f['travelMode'].errors.travelMode">Invalid Mode of Travel</div>
+              </div>
+            </div>
+
+            <div class="form-group pt-4">
+              <div class="label">Nature Of Travel</div>
+              <input type="text" class="form-control" placeholder=""
+                formControlName="natureOfTravel">
+              <div *ngIf="f.natureOfTravel.errors && f.natureOfTravel.touched" class="form-text  text-danger">
+                <div *ngIf="f['natureOfTravel'].errors.natureOfTravel">Invalid Nature of Travel</div>
+              </div>
+            </div>-->
+
+            <div class="form-check pt-2">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Multicity Travel
+              </label>
+            </div>
+            <div class="pt-4"></div>
+            <button class="btn-orange " type="submit" [disabled]="!addTourForm.valid" *ngIf="!isLoading">
+              Create Tour
+            </button>
+            <div *ngIf="isLoading" class="spinner-border" role="status"> </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="bg-white shadow-sm message-box ">
+      <ul class="list-group">
+        <li class="list-group-item " >
+          <div class="d-flex p-3">
+            <div>
+              <img src="https://via.placeholder.com/50" class="rounded-circle" alt="">
+            </div>
+            <div class="ps-4">
+              <p>Mr.Joshi</p>
+              <p><small>Have Uploaded the documents, Please check and confirm</small></p>
+              <a href="#">View Message</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>

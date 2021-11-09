@@ -1,0 +1,11 @@
+<div class="form-group pt-4">
+    <div class="label">{{ label }}</div>
+    <input [type]="type" class="form-control" placeholder="{{ label }}" 
+    [class.c-field__input--disabled]="isDisabled"
+    [formControl]="ngControl.control"
+    (change)="setValue($event)"
+    >
+    <field-error-message [visible]="showValidationErrorMessage"
+        [currentControl]="ngControl.control" [formLabel] = label>
+    </field-error-message>
+</div>

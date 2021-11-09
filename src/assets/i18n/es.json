@@ -1,0 +1,9 @@
+{
+  "TOUR": {
+    "TITLE_CREATE_NEW" : "Crear nuevo recorrido"
+  },
+  "FORM_VALIDATION_MESSAGES": {
+    "REQUIRED": "{{LABEL}} es requerido.",
+    "INVALID": "{{LABEL}} es invalido."
+  }
+}

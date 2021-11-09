@@ -1,0 +1,9 @@
+{
+  "TOUR": {
+    "TITLE_CREATE_NEW" : "Create New Tour"
+  },
+  "FORM_VALIDATION_MESSAGES": {
+    "REQUIRED": "{{LABEL}} is required.",
+    "INVALID": "{{LABEL}} is invalid."
+  }
+}

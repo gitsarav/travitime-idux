@@ -1,0 +1,36 @@
+<div class="form-group pt-4">
+    <div class="label">{{ label }}</div>
+    <!-- <input [type]="type" class="form-control" placeholder="{{ label }}" 
+    [class.c-field__input--disabled]="isDisabled"
+    [formControl]="ngControl.control"
+    (change)="setValue($event)"
+    > -->
+    
+    <select 
+    class="form-select" aria-label="Default select example"
+        [class.c-field__input--disabled]="isDisabled"
+        [formControl]="ngControl.control"
+        [required]="required"
+    >
+        <option [value]="option.value" *ngFor="let option of options; trackBy: trackByOptions">{{ option.label | translate }}</option>
+    </select>
+    <field-error-message [visible]="showValidationErrorMessage"
+        [currentControl]="ngControl.control" [formLabel] = label>
+    </field-error-message>
+</div>
+<!-- <div class="c-field" ion-content>
+    <h6 class="c-field__label">{{ label }}</h6>
+  
+    <ion-select class="c-field__select" [interfaceOptions]="interfaceOptions"
+      [placeholder]="placeholder || ('FIELDS.SELECT.PLACEHOLDER' | translate)" [required]="required"
+      [formControl]="ngControl.control" [attr.multiple]="multiple"
+      [okText]="'FIELDS.SELECT.OK_TEXT' | translate"
+      [cancelText]="'FIELDS.SELECT.CANCEL_TEXT' | translate">
+      <ion-select-option *ngFor="let option of options; trackBy: trackByOptions"
+        [value]="option.value">{{ option.label | translate }}</ion-select-option>
+    </ion-select>
+  
+    <app-field-error-message [visible]="showValidationErrorMessage"
+      [currentControl]="ngControl.control">
+    </app-field-error-message>
+  </div> -->

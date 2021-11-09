@@ -1,6 +1,8 @@
 import { SlideDownDirective } from './directives/slidedown.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { CustomTranslationsLoaderService } from './service/custom-translations-loader-service/custom-translations-loader.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +19,14 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TourComponent } from './dashboard/tour/tour.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastComponent } from './common/toast/toast.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthComponent } from './auth/auth.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
+import { IduxChatBoxComponent } from './feature/chat/idux-chat-box/idux-chat-box.component';
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
     AuthComponent,
     ResetPasswordComponent,
     SlideDownDirective,
+    IduxChatBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,14 +55,22 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
     CarouselModule,
     FormsModule,
     HttpClientModule,
-    RecaptchaV3Module
+    RecaptchaV3Module,
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: CustomTranslationsLoaderService,
+        deps: [HttpClient],
+      },
+    })
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
-    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LdYm8UcAAAAADu8pSWHZRKw0IbGNZddmTn48TYD" }
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LedrQ8dAAAAACvlCuRiuxbD4I7P2RMpsc9Qex1f" }
   ],
   bootstrap: [AppComponent],
 })

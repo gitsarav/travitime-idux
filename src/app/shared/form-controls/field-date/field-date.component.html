@@ -1,0 +1,21 @@
+
+<div class="form-group pt-4">
+    <div class="label">{{ label }}</div>
+    <div class="input-group">
+        <input type="text" ngbDatepicker #d="ngbDatepicker"
+            class="form-control" placeholder="{{ label }}" 
+            [class.c-field__input--disabled]="isDisabled"
+            [formControl]="ngControl.control"
+            (change)="setValue($event)"
+            />
+        <span class="input-group-btn">
+            <button class="btn btn-primary p-1" (click)="d.toggle()"> <i class='bx bx-calendar bx-sm'></i></button>
+          <!-- <button class="btn btn-default" type="button">Go!</button> -->
+        </span>
+      </div>
+    
+    <field-error-message [visible]="showValidationErrorMessage"
+        [currentControl]="ngControl.control" [formLabel] = label>
+    </field-error-message>
+</div>
+<!-- <ngb-datepicker #d></ngb-datepicker> -->

@@ -1,8 +1,10 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TourService } from "../tour.service";
 import { Observable } from 'rxjs';
-// import { COUNTRIES } from 'src/app/data/countries';
+import * as moment from 'moment';
+import { COUNTRIES } from 'src/app/data/countries';
 // import { Country } from 'src/app/model/country';
 
 interface Country {
@@ -13,7 +15,7 @@ interface Country {
   population: number;
 }
 
-const COUNTRIES: Country[] = [
+const COUNTRIES1: Country[] = [
   {
     name: 'Russia',
     flag: 'f/f3/Flag_of_Russia.svg',
@@ -104,11 +106,120 @@ export class AllToursComponent implements OnInit {
   pageSize = 4;
   collectionSize = COUNTRIES.length;
   countries: Country[];
-
-  constructor(private router: Router, private route: ActivatedRoute) {
+  allTours = [];
+  moment = moment;
+  natureOfOptions = [
+    {
+      label:"Flight",
+      value:"1"
+    },
+    {
+      label:"Train",
+      value:"2"
+    },
+    {
+      label:"Car",
+      value:"3"
+    },
+    {
+      label:"Bus",
+      value:"4"
+    },
+    {
+      label:"Cruise Ship",
+      value:"5"
+    },
+    {
+      label:"Others",
+      value:"0"
+    }
+  ];
+  travelModeOptions = [
+    {
+      label:"Weekend Break",
+      value:"1"
+    },
+    {
+      label:"Package Holiday",
+      value:"2"
+    },
+    {
+      label:"Business Travel",
+      value:"3"
+    },
+    {
+      label:"Group Tour",
+      value:"4"
+    },
+    {
+      label:"Road Trip",
+      value:"5"
+    },
+    {
+      label:"Volunteer Travel",
+      value:"6"
+    },
+    {
+      label:"Long Term Travel",
+      value:"7"
+    },
+    {
+      label:"Student Travel",
+      value:"8"
+    },
+    {
+      label:"Visiting Friends or Relatives",
+      value:"9"
+    },
+    {
+      label:"Event Travel",
+      value:"10"
+    },
+    {
+      label:"Others",
+      value:"0"
+    }
+  ];
+  countryOptions = [];
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private tourSrv : TourService) {
     this.refreshCountries();
+    this.getAllTours();
+    this.countryOptions = COUNTRIES.map(item => {
+      return {
+        label: item.name,
+        value: item.id,
+        flag : item.flag
+      };
+    });
   }
-
+  getAllTours(){
+    this.tourSrv.getAllTours().subscribe(
+      (res) => {
+        console.log(res);
+        this.allTours = res['data'];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getOptionsDisplay(arr,value){
+    let res = arr.filter(function(item){
+      return item.value == value;
+    });
+    console.log(res);
+    return res.length > 0 ? res[0].label : 'NA';
+  }
+  getCountryFlag(id){
+    let res = this.countryOptions.filter(function(item){
+      return item.value == id;
+    });
+    console.log(res[0]);
+    return res[0]?.flag ? res[0].flag : '';
+  }
   refreshCountries() {
     this.countries = COUNTRIES.map((country, i) => ({
       id: i + 1,

@@ -1,0 +1,3 @@
+<div  class="form-text  text-danger">
+    <div *ngIf="visible && errorMessage && currentControl.errors && currentControl.touched && currentControl.invalid">{{ errorMessage | translate: { LABEL: formLabel } }}</div>
+  </div>
